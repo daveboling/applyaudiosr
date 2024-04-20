@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "applyaudiosr"
+version = "0.1.0"
+description = "A simple CLI script that automates the processes necessary to apply audio super resolution to a full-length WAV file"
+authors = ["Dave Boling <daviddboling@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+pydub = "^0.25.1"
+audiosr = "0.0.7"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+
+[tool.poetry.scripts]
+applyaudiosr = "applyaudiosr.main:process"
