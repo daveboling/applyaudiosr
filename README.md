@@ -4,6 +4,8 @@ A simple CLI script that automates the processes necessary to apply audio super 
 
 ---
 
+NOTE: Currently, this project only supports _mono_ WAV files. Stereo support will be added in the future. Please keep this in mind if you plan to use this project for any purpose.
+
 Steps to Run:
 ```
 # Create a new conda environment

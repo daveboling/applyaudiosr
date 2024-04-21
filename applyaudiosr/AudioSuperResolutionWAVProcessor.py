@@ -14,9 +14,17 @@ from applyaudiosr.constants import (
     AUDIOSR_OUTPUT_DIR_NAME,
     PROCESSED_FILE_SUFFIX,
 )
+from applyaudiosr.utils.common import print_wav_metadata
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
+
+# Create a StreamHandler that outputs to the console
+console_handler = logging.StreamHandler()
+console_handler.setLevel(logging.INFO)
+
+# Add the handler to the logger
+logger.addHandler(console_handler)
 
 
 class AudioSuperResolutionWAVProcessor:
@@ -93,6 +101,7 @@ class AudioSuperResolutionWAVProcessor:
             combined += chunk
 
         # Export the combined audio
+        combined = combined
         combined.export(
             os.path.join(
                 self.base_output_dir, f"{self.filename}{PROCESSED_FILE_SUFFIX}.wav"
@@ -140,6 +149,9 @@ class AudioSuperResolutionWAVProcessor:
         This method clears the base output directory, generates a batch list file from the waveform,
         runs the audiosr command on the audio chunks, and combines the resulting waveforms.
         """
+
+        # Print the metadata of the input waveform
+        print_wav_metadata(waveform_path=self.waveform_path)
 
         # Clear the base output directory
         self._clear_base_output_dir()
